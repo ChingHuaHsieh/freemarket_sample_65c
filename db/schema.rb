@@ -39,6 +39,5 @@ ActiveRecord::Schema.define(version: 2019_12_24_140321) do
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["user_id"], name: "index_products_on_user_id"
   end
-ActiveRecord::Schema.define(version: 0) do
 
 end
