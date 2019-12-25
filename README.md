@@ -98,5 +98,3 @@
 
 ### Association
 - has_many :products
-
-// = require jquery_ujs
