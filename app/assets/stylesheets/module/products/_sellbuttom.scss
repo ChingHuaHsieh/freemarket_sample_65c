@@ -1,0 +1,22 @@
+.sell-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #ea352d;
+  text-align: center;
+  display: inline-block;
+  z-index: 500;
+  &__name {
+    font-size: 22px;
+    color: #fff;
+    padding: 25px 0 0;
+  }
+  i {
+    font-size: 60px;
+    color: #fff;
+    display: inline-block;
+  }
+}

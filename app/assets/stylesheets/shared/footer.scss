@@ -1,0 +1,150 @@
+.aside {
+  height: 260px;
+  background: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?61716930");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.app-text {
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  h2 {
+    color: #FFF;
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  p {
+    color: #FFF;
+    font-size: 35px;
+    margin-bottom: 20px;
+  }
+  &__figure {
+    display: flex;
+    align-items: center;
+    &__img {
+      background-color: white;
+      border-radius: 15px;
+      height: 68px;
+      width: 68px;
+      margin-right: 20px;
+      text-align: center;
+      line-height: 6.5;
+      img {
+        height: 50px;
+        width: 50px;
+      }
+    }
+    ul {
+      display: flex;
+      img {
+        height: 40px;
+        margin-right: 8px;
+        width: 144px;
+        }
+      a:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.footer {
+  background: #222;
+  height: 400px;
+  font-size: 12px;
+  padding: 0px 20px 10px;
+  h2 {
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+  }
+  a {
+    color: #BCBCBC;
+    font-size: 12px;
+  }
+  i {
+    color: #fff;
+    font-size: 3em;
+  }
+  span {
+    color: white;
+  }
+}
+
+.footer-content {
+  font-weight: 600;
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-top {
+  display: flex;
+  width: 1020px;
+  justify-content: center;
+  margin: 0 auto;
+  &__content {
+    padding-left: 0px;
+    width: auto;
+    padding: 0px 40px 0px 0px;
+    display: inline-block;
+    margin-top: 18px;
+    vertical-align: top;
+    li {
+      margin-top: 16px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &--social {
+      display: flex;
+      li {
+        padding-right: 20px;
+      }
+    }
+    &--divide {
+      display: flex;
+      &--left {
+        width: 50%;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  width: 1020px;
+  margin: 30px auto 20px;
+  align-items: center;
+  display: flex;
+  a {
+    text-align: center;
+    color: inherit;
+    &:hover {
+      opacity: 0.7;
+    }
+    img {
+      height: 31px;
+      width: 124px;
+      vertical-align: middle;
+    }
+  }
+  span {
+    text-align: center;
+    padding-left: 15px;
+    width: 75%;
+    font-weight: 100;
+  }
+}
+
+.footer__logo {
+  
+}

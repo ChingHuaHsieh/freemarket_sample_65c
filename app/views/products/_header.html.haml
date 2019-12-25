@@ -1,0 +1,46 @@
+%header.header
+  %div.header__content
+    %div.header__content__up
+      %div.header__content__up__left
+        = link_to "#" do
+          = image_tag 'fmarket_logo_red.svg', alt: 'mercari-logo'
+      %div.header__content__up__right
+        %form.header__content__up__right__form
+          %input{ name: 'seach', class: 'header__content__up__right__form__search',placeholder: '何かお探しですか？' }
+        %div.header__content__up__right__submit
+          = fa_icon 'search'
+    %div.header__content__bottom
+      %div.header__content__bottom__left
+        %div.header__content__bottom__left__category
+          = link_to "#" do
+            = fa_icon 'list-ul'
+            %span
+              カテゴリーから探す
+          %ul.header__menu-box--left__parents
+            - @parents.each do |parent|
+              %li.header__menu-box--left__parents__parent
+                = link_to parent.name, "#"
+                %ul.header__menu-box--left__children
+                  = render partial: "header_child", collection: parent.children, as: "category"
+        %div.header__content__bottom__left__brand
+          = link_to "#" do
+            = fa_icon 'tag'
+            %span ブランドから探す
+          %ul.brand__wrapper
+            %li.brand
+              %p アディダス
+            %li.brand
+              %p ナイキ
+            %li.brand
+              %p ルイ・ヴィトン
+            %li.brand
+              %p シャネル
+            %li.brand
+              %p シュプリーム
+            %li.brand
+              %p ブランド一覧
+      %div.header__content__bottom__right
+        %div.header__content__bottom__right__signup
+          = link_to '新規会員登録', "#"
+        %div.header__content__bottom__right__login
+          = link_to 'ログイン', "#"
