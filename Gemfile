@@ -63,6 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'font-awesome-sass'
 gem "font-awesome-rails"
 gem 'ancestry'
+gem 'font-awesome-sass', '>=5.11.1'

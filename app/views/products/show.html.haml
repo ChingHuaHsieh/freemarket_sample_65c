@@ -1,0 +1,158 @@
+.container
+  = render 'header'
+  .product-show-main-background
+    %section.product-show-product-box-container
+      %h1
+        .product-name
+          Product_name
+      .product-main-content
+        .product-photo
+          .image.slider-for
+            = image_tag("product/sample1.jpg", class: "image-sub")
+            = image_tag("product/sample2.jpg", class: "image-sub")
+            = image_tag("product/sample1.jpg", class: "image-sub")
+            = image_tag("product/sample2.jpg", class: "image-sub")
+            = image_tag("product/sample1.jpg", class: "image-sub")
+          .owl-dot
+            .owl-dot__product.current
+              .owl-dot__product__box.slider-nav
+                = image_tag("product/sample1.jpg", class: "image-sub")
+                = image_tag("product/sample2.jpg", class: "image-sub")
+                = image_tag("product/sample1.jpg", class: "image-sub")
+                = image_tag("product/sample2.jpg", class: "image-sub")
+                = image_tag("product/sample1.jpg", class: "image-sub")
+        %table.product-detail-table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = link_to "Product_user_nickname", "#", class: "user-name-string";
+                .product-user-ratings
+                  .product-user-rating
+                    = image_tag("")
+                    = fa_icon "smile-o"
+                    %span 0
+                  .product-user-rating
+                    = image_tag("")
+                    = fa_icon "meh-o"
+                    %span 0
+                  .product-user-rating
+                    = image_tag("")
+                    = fa_icon "frown-o"
+                    %span 0
+            %tr
+              %th カテゴリー
+              %td
+                .product-detail-table-sub
+                  Main_category
+                .product-detail-table-sub
+                .product-detail-table-sub__sub
+                  >
+                  Sub_category
+                .product-detail-table-sub__sub__sub
+                  >
+                  Sub2_category
+            %tr
+              %th ブランド
+              %td
+                = link_to "#" do
+                  .brand-name
+                    Brand_name
+            %tr
+              %th 商品の状態
+              %td
+                .product-detail
+                  Product_state
+            %tr
+              %th 配送料の負担
+              %td
+                .product-detail
+                  Fee_payer
+            %tr
+              %th 配送の方法
+              %td
+                .product-detail らくらくメルカリ便
+            %tr
+              %th 発送元地域
+              %td
+                .product-detail.prefecture-name
+                  Product_city
+            %tr
+              %th 配送日の目安
+              %td
+                .product-detail
+                  Delivery_time
+      .product-price-box
+        %span.product-price 
+          ¥ 999,999,999
+        %span.product-tax (税込)
+        %span.product-fee_payer
+      = link_to "#", data: {turbolinks: false} do
+        .product-buy-btn 購入画面に進む
+      .product-description
+        %p.product-description__inner
+          Product_detail
+        .product-button-container.clearfix
+          .product-button-left
+            .product-button-like
+              %button{type: "button", name: "like!", class: "product-button"}
+                = fa_icon "heart"
+                %span.fade-in-down いいね!
+                %span.fade-in-down 0
+          .product-button__report
+            = link_to "", class: "product-button__report" do
+              = fa_icon "flag"
+              %span.fade-in-down 不適切な商品の報告            
+          .product-button-right
+            = link_to '#', target: "_blank", class: "safe-description" do
+              = fa_icon "lock"
+              あんしん・あんぜんへの取り組み
+    .message-content
+    .message-content__box__form
+      .product-message-content
+        .product-message-comment
+          .message-items
+            .message-user
+              = image_tag 'mypage/user-icon.png', size: '30x30', alt: 'user-icon', class:"user-icon"
+              .message-user-name
+                %p
+                  Comment_user_nickname
+            .message-body
+              Comment_text
+              .message-icons
+                .message-icon-left
+                  = fa_icon "history"
+                  %span
+                    1時間
+                .message-icon-right
+                  .message-delete
+                    = link_to "#" do
+                      = fa_icon "trash"
+                  %i.icon-ballon
+        .product-message-form
+          = form_for("#") do |f|
+            %p.attention 
+              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            =f.text_field :text, class:"message-form"
+            .message-submit__details
+              = f.submit "コメントする", class:"comment-button"
+      .nav-product-link
+        .previous-product.items-link_to
+          =fa_icon "chevron-left"
+          = link_to "前の商品へ", "#"
+          .next-product.items-link_to
+            = link_to "次の商品へ", "#"
+            = fa_icon "chevron-right"
+        .product-social-media-box
+          .text-center
+          %ul.social-media-box
+            %li
+              = link_to "#", target: "_blank", class: "share-btn" do
+                = fa_icon "facebook-square"
+            %li
+              = link_to "#", target: "_blank", class: "share-btn" do
+                = fa_icon "twitter-square"
+            %li
+              = link_to "#", target: "_blank", class: "share-btn" do
+                = fa_icon "pinterest-square"
+  = render "footer"
