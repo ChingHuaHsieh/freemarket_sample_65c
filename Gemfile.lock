@@ -293,7 +293,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   fog-aws
   font-awesome-rails
-  font-awesome-sass
+  font-awesome-sass (>= 5.11.1)
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
