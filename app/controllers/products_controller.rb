@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
 
   end
 
+  def new
+    
+  end
+
   def show
     @parents = Category.all.order("id ASC").limit(13)
   end

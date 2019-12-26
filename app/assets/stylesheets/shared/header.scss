@@ -43,6 +43,7 @@
             border-color: rgb(204, 204, 204);
             border-image: initial;
             border-radius: 4px;
+            background-color: rgb(245, 245, 245);
             outline: none;
             padding: 0 50px 0 10px;
             transition: all 0.3s ease-out 0s;
@@ -79,7 +80,7 @@
         display: flex;
         margin-left: 0px;
         height: 44px;
-        padding-top: 9px;
+        // padding-top: 9px;
         i {
           color: $red;
         }
@@ -109,7 +110,7 @@
           }
           ul {
             position: absolute;
-            top: 35px;
+            top: 44px;
             font-weight: normal;
             box-shadow: 0 2px 4px rgba(41, 29, 29, 0.18);
             li {
@@ -185,6 +186,11 @@
         &__brand {
           font-weight: 600;
           display: inline;
+          a {
+            &:hover {
+              color: $sky_blue;
+            }
+          }
           ul {
             display: none;
           }

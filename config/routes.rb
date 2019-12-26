@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'products#index'
-  resources :products, only: [:show, :index]
+  resources :products, only: [:new, :show, :index]
 end
