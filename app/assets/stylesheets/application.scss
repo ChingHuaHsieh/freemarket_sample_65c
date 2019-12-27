@@ -8,7 +8,11 @@
 @import "shared/footer";
 @import "module/products/show";
 @import "module/products/main";
+@import "module/products/new";
 @import "module/products/sellbuttom";
+
+@import "signup/common";
+
 
 
 body {
@@ -17,3 +21,4 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
