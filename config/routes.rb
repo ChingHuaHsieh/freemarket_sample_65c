@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  
   root 'products#index'
-  resources :products, only: [:new, :show, :index]
+
+  resources :products, only: [:new, :show, :index] do
+    get 'purchase_confirmation', to:'products#purchase_confirmation'
+  end
 
   namespace :api do
     resources "products", controller: :products, only: :child, defaults: { format: 'json' } do
@@ -14,4 +18,5 @@ Rails.application.routes.draw do
       end
     end
   end
+
 end

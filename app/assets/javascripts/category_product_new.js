@@ -4,6 +4,8 @@ $(function(){
       var option = `<option value ="${cat.id}">${cat.name}</option>`
       return option
   }
+
+  //  show_child_category  //
   
   $('#parent').change(function() {
     var parent_id = $(this).val();
@@ -26,6 +28,8 @@ $(function(){
     .fail(function() {
     });
   });
+
+    //  show_grand_child_category  //
 
   $(this).on("change", "#child", function() {
     var child_id = $("#child").val();

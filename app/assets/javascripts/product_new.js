@@ -1,6 +1,6 @@
 $(function() {
 
-  //  イメージの挿入  //
+  //  insert_img  //
 
   var preview = $('#preview');
   var dropzone = $('.dropzone-area');
@@ -34,13 +34,13 @@ $(function() {
         $(".dropzone-area").attr('id', 'nothing');
       }
 
-  //  新しいインプットの表示 // 
+  //  insert_input  //
 
       var new_image = $(`<input id="upload-image__btn" class="upload-image" data-image= ${images.length} type="file" name="product[images_attributes][${images.length}][image]">`);
       input_area.prepend(new_image);
   });
 
-  //  削除と編集  //
+  //  img_edit_and_destroy  //
 
   $(document).on('click', '.delete-btn', function() {
     var target_image = $(this).parent().parent();
@@ -80,7 +80,7 @@ $(function() {
     })
   })
   
-  //  価格表示  //
+  //  show_price  //
 
   $('#sell-price').on('keyup', function(){
     var price = $(this).val();

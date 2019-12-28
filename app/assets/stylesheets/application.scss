@@ -1,17 +1,26 @@
+  //  slick_relation //
 @import "slick-theme"; 
 @import "slick";
+
+  // font_awesome_gem_relation  //
 @import "font-awesome-sprockets";
 @import "./font-awesome";
+
 @import "config/reset";
 @import "config/colors";
+
+  //  common_header_footer  //
 @import "shared/header";
 @import "shared/footer";
+@import "signup/common";
+
+  // products_relation //
 @import "module/products/show";
 @import "module/products/main";
 @import "module/products/new";
+@import "module/products/purchase_confirmation";
 @import "module/products/sellbuttom";
 
-@import "signup/common";
 
 
 

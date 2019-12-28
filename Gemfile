@@ -70,15 +70,22 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'haml-rails'
-gem 'jquery-rails'
-gem "font-awesome-rails"
-gem 'font-awesome-sass', '>=5.11.1'
-
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
-# making_category_datebase
+
+  #  haml  #
+gem 'haml-rails'
+
+  #  jquery  #
+gem 'jquery-rails'
+
+  #  font-awesome  #
+gem "font-awesome-rails"
+gem 'font-awesome-sass', '>=5.11.1'
+
+  #  making_category_datebase #
 gem 'ancestry'
-# static_date_management
+
+  #  static_date_management  #
 gem 'active_hash', '~> 1.5.3'
