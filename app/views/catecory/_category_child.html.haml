@@ -1,4 +1,4 @@
 %li.header__menu-box--left__children__child
   = link_to "#{category.name}", "#"
   %ul.header__menu-box--left__grand-children
-    = render partial: "category_grand-child", collection: category.children, as: "category"
+    = render partial: "catecory/category_grand-child", collection: category.children, as: "category"

@@ -65,7 +65,7 @@
       }
     }
 
-  // -- category --
+  //  category_start //
 
     &__bottom {
       margin-top: 8px;
@@ -80,7 +80,6 @@
         display: flex;
         margin-left: 0px;
         height: 44px;
-        // padding-top: 9px;
         i {
           color: $red;
         }
@@ -181,7 +180,7 @@
           }
         }
 
-  // -- category --
+  //  category_over  //
 
         &__brand {
           font-weight: 600;

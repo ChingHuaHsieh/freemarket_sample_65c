@@ -2,7 +2,7 @@
   %div.header__content
     %div.header__content__up
       %div.header__content__up__left
-        = link_to "#" do
+        = link_to root_path do
           = image_tag 'fmarket_logo_red.svg', alt: 'mercari-logo'
       %div.header__content__up__right
         %form.header__content__up__right__form
@@ -21,7 +21,7 @@
               %li.header__menu-box--left__parents__parent
                 = link_to parent.name, "#"
                 %ul.header__menu-box--left__children
-                  = render partial: "category_child", collection: parent.children, as: "category"
+                  = render partial: "catecory/category_child", collection: parent.children, as: "category"
         %div.header__content__bottom__left__brand
           = link_to "#" do
             = fa_icon 'tag'
