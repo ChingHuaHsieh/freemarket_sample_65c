@@ -10,53 +10,53 @@
           .image.slider-for
             = image_tag("product/sample1.jpg", class: "image-sub")
             = image_tag("product/sample2.jpg", class: "image-sub")
-            = image_tag("product/sample1.jpg", class: "image-sub")
-            = image_tag("product/sample2.jpg", class: "image-sub")
-            = image_tag("product/sample1.jpg", class: "image-sub")
+            = image_tag("product/sample3.jpg", class: "image-sub")
+            = image_tag("product/sample4.jpg", class: "image-sub")
+            = image_tag("product/sample5.jpg", class: "image-sub")
+          %div.soldout-tag_for_show_page
+            %span
+              SOLD
           .owl-dot
             .owl-dot__product.current
               .owl-dot__product__box.slider-nav
                 = image_tag("product/sample1.jpg", class: "image-sub")
                 = image_tag("product/sample2.jpg", class: "image-sub")
-                = image_tag("product/sample1.jpg", class: "image-sub")
-                = image_tag("product/sample2.jpg", class: "image-sub")
-                = image_tag("product/sample1.jpg", class: "image-sub")
+                = image_tag("product/sample3.jpg", class: "image-sub")
+                = image_tag("product/sample4.jpg", class: "image-sub")
+                = image_tag("product/sample5.jpg", class: "image-sub")
         %table.product-detail-table
           %tbody
             %tr
               %th 出品者
               %td
-                = link_to "Product_user_nickname", "#", class: "user-name-string";
+                = link_to "Product_user_nickname", "#", class: "user-name-string hover-blue";
                 .product-user-ratings
                   .product-user-rating
-                    = image_tag("")
-                    = fa_icon "smile-o"
+                    = image_tag("icon/1.jpg",height: "16px", width: "16px")
                     %span 0
                   .product-user-rating
-                    = image_tag("")
-                    = fa_icon "meh-o"
+                    = image_tag("icon/2.jpg",height: "16px", width: "16px")
                     %span 0
                   .product-user-rating
-                    = image_tag("")
-                    = fa_icon "frown-o"
+                    = image_tag("icon/3.jpg",height: "16px", width: "16px")
                     %span 0
             %tr
               %th カテゴリー
               %td
-                .product-detail-table-sub
+                .product-detail-table-sub.hover-blue
                   Main_category
                 .product-detail-table-sub
-                .product-detail-table-sub__sub
+                .product-detail-table-sub__sub.hover-blue
                   >
                   Sub_category
-                .product-detail-table-sub__sub__sub
+                .product-detail-table-sub__sub__sub.hover-blue
                   >
                   Sub2_category
             %tr
               %th ブランド
               %td
                 = link_to "#" do
-                  .brand-name
+                  .brand-name.hover-blue
                     Brand_name
             %tr
               %th 商品の状態
@@ -75,7 +75,7 @@
             %tr
               %th 発送元地域
               %td
-                .product-detail.prefecture-name
+                .product-detail.prefecture-name.hover-blue
                   Product_city
             %tr
               %th 配送日の目安
@@ -87,8 +87,15 @@
           ¥ 999,999,999
         %span.product-tax (税込)
         %span.product-fee_payer
-      = link_to "#", data: {turbolinks: false} do
-        .product-buy-btn 購入画面に進む
+      = link_to "#" do
+        .product-edit-btn 商品の編集
+        .product-btn-or or
+        .product-stop-btn 出品を一旦停止する
+      = link_to "#" do
+        .product-stop-btn この商品を削除する   
+      -# = link_to "#", data: {turbolinks: false} do
+      -#   .product-buy-btn 購入画面に進む
+      -# .product-buy-btn-sold 売り切れました
       .product-description
         %p.product-description__inner
           Product_detail
@@ -99,14 +106,14 @@
                 = fa_icon "heart"
                 %span.fade-in-down いいね!
                 %span.fade-in-down 0
-          .product-button__report
-            = link_to "", class: "product-button__report" do
-              = fa_icon "flag"
-              %span.fade-in-down 不適切な商品の報告            
+            .product-button__report
+              = link_to "", class: "product-button__report" do
+                = fa_icon "flag"
+                %span.fade-in-down 不適切な商品の報告            
           .product-button-right
-            = link_to '#', target: "_blank", class: "safe-description" do
+            = link_to '#', target: "_blank", class: "safe-description hover-blue" do
               = fa_icon "lock"
-              あんしん・あんぜんへの取り組み
+              あんぜんへの取り組み
     .message-content
     .message-content__box__form
       .product-message-content
@@ -139,20 +146,20 @@
       .nav-product-link
         .previous-product.items-link_to
           =fa_icon "chevron-left"
-          = link_to "前の商品へ", "#"
+          = link_to "前の商品へ", "#",class: "hover-blue"
           .next-product.items-link_to
-            = link_to "次の商品へ", "#"
+            = link_to "次の商品へ", "#",class: "hover-blue"
             = fa_icon "chevron-right"
         .product-social-media-box
           .text-center
           %ul.social-media-box
             %li
-              = link_to "#", target: "_blank", class: "share-btn" do
-                = fa_icon "facebook-square"
+              = link_to "#", target: "_blank", class: "share-btn hover-blue" do
+                = image_tag("icon/4.jpg",height: "44px", width: "44px")
             %li
-              = link_to "#", target: "_blank", class: "share-btn" do
-                = fa_icon "twitter-square"
+              = link_to "#", target: "_blank", class: "share-btn hover-blue" do
+                = image_tag("icon/5.jpg",height: "44px", width: "44px")
             %li
-              = link_to "#", target: "_blank", class: "share-btn" do
-                = fa_icon "pinterest-square"
+              = link_to "#", target: "_blank", class: "share-btn hover-blue" do
+                = image_tag("icon/6.jpg",height: "44px", width: "44px")
   = render "footer"

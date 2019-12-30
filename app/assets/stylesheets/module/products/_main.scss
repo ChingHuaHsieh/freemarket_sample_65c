@@ -28,17 +28,16 @@
   }
 }
 
-// -- slider --
+  //  slider  //
 
 .toppage-main{
   min-height: 100vh;
-  // padding-bottom: 1650px;/*←footerの高さ*/
   .top-image {
     position: relative;
   }
 }
 
-// -- popular-category --
+  //  popular-category  //
 
 .popular-category {
   background-color: $white;
@@ -68,7 +67,7 @@
   }
 }
 
-// -- pickup --
+  //  pickup  //
 
 .pickup__area {
   padding-bottom: 100px;
@@ -173,4 +172,34 @@
   }
 }
 
+  //  soldout_tag  //
 
+.soldout-tag {
+  display: block;
+  color: #333;
+  z-index: 1;
+  span {
+    display: block;
+    top: 18px;
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    z-index: 5;
+    color: #fff;
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+}
+.soldout-tag::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: #ea352d transparent transparent transparent;
+  border-width: 90px 90px 0 0;
+}

@@ -1,0 +1,74 @@
+=render 'shared/login_simple_header'
+%div.main
+  %h2
+    購入内容の確認
+  %div.item-info
+    %div.item-info__inner
+      %div.item-info__inner__box
+        = image_tag "product/sample1.jpg", height: "80px" , width: "80px"
+        %div.item-info__inner__box__right
+          %p.item-info__inner__box__right__name
+            NAME
+          %p.item-info__inner__box__right__price
+            %span
+              ¥9,999
+            %span
+              （税込）送料込み
+  %div.buy-detail
+    %div.buy-detail__inner
+      %form.buy-detail__inner__form
+        %ul.buy-detail__inner__form__price
+          %li
+            %div.buy-detail__inner__form__price__left
+              支払い金額
+            %div.buy-detail__inner__form__price__right
+              %span
+                ¥9,999
+        %ul.buy-detail__inner__form__point
+          %li
+            %div.buy-detail__inner__form__point__content
+              %div.buy-detail__inner__form__point__content__icon
+              %p  
+                ポイントを使用 (所持ポイント: P0)
+        %div.buy-detail__inner__form__user-info
+          %div.buy-detail__inner__form__user-info__inner
+            %div.user-info-top
+              %h3 
+                支払方法
+              = link_to "#" do
+                変更する
+                %span
+                %i.fa.fa-chevron-right
+            %div.user-info-text
+              **** **** **** 1234
+              %br
+              12 / 12
+        %div.buy-detail__inner__form__user-info
+          %div.buy-detail__inner__form__user-info__inner
+            %div.user-info-top
+              %h3 
+                配送先
+              = link_to "#" do
+                変更する
+                %span
+                %i.fa.fa-chevron-right
+            %div.user-info-text
+              PostalCode
+              %br
+              AddressesPrefecture_City_Street_Building
+              %br
+              UserName
+        %section.buy-detail__inner__form__bottom
+          %p.buy-detail__inner__form__bottom__upper-text
+            この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+          = link_to "#" do
+            %bottom
+              購入する
+          %p.buy-detail__inner__form__bottom__bottom-text
+            アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
+        %div.buy-detail__inner__form__app
+          = link_to "#" do
+            = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3135490372", width: "130px")
+          = link_to "#" do
+            = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3135490372", width: "130px")
+=render 'shared/login_footer'
