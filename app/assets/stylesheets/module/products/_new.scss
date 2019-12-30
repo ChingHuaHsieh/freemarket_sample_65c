@@ -173,13 +173,13 @@
         .select-wrap {
           margin: 8px 0 0;
           position: relative;
-          i {
+          svg, i {
             position: absolute;
             right: 16px;
             top: 50%;
             z-index: 10;
             color: $text-grey;
-            font-size: 35px;
+            font-size: 25px;
             -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
           }
