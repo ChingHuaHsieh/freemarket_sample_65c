@@ -1,4 +1,4 @@
-  //  top_page  //
+  //  top_page_slick  //
 
 $(function() {
   $('.slider').slick({
@@ -15,7 +15,7 @@ $(function() {
   });
 });
 
- //  product_show  //
+ //  product_show_slick  //
 
 $(function() {
   $('.slider-for').slick({
@@ -27,9 +27,18 @@ $(function() {
     asNavFor: '.slider-nav'
   });
   $('.slider-nav').slick({
-    slidesToShow: 5,
+    slidesToShow: $('.owl-dot').children('.owl-dot__product').length, //  中身の写真数により変更  //
     slidesToScroll: 1,
     asNavFor: '.slider-for',
     focusOnSelect: true,
   });
 });
+
+// $(function(){
+//   $('.image-sub').mouseover(function(){
+//     var selectedSrc = $(this).attr('src');
+//     $('.image').html(`<img src="${selectedSrc}">`)
+//   });
+// });
+
+

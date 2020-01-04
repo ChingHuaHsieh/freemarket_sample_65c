@@ -3,16 +3,16 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     create_table :products do |t|
       t.references :user, null: false
       t.string :name, null: false
-      t.index :name, unique: true
-      t.text :content
+      t.text :description
       t.references :category, null: false
       t.references :brand
-      t.integer :goods_status, null: false
-      t.integer :delivery_charge, null: false
-      t.integer :delivery_way, null: false
-      t.integer :from_prefecture, null: false
-      t.integer :delivery_days, null: false
-      t.integer :selling_status, null: false
+      t.integer :goods_status_id, null: false
+      t.integer :delivery_charge_id, null: false
+      t.integer :delivery_way_id, null: false
+      t.integer :from_prefecture_id, null: false
+      t.integer :delivery_days_id, null: false
+      t.integer :price, null: false
+      t.integer :selling_status_id, null: false, default: 1
       t.timestamps
     end
   end

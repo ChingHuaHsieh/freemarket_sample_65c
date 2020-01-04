@@ -74,6 +74,9 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
 
+  #  devise  #
+gem 'devise'
+
   #  haml  #
 gem 'haml-rails'
 
@@ -89,3 +92,9 @@ gem 'ancestry'
 
   #  static_date_management  #
 gem 'active_hash', '~> 1.5.3'
+
+  #  debug  #
+gem 'pry-rails'
+
+  #  creditcard  #
+gem 'payjp'

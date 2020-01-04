@@ -16,11 +16,11 @@ $(function(){
         dataType: 'json'
     })
     .done(function(categories) {
-        $('.child').css('display', 'block');
-        $('#child').empty();
-        $('.grand_child').css('display', 'none');
-        $('#child').append(buildPrompt);
-        categories.forEach(function(cat) {
+        $('.child').css('display', 'block');        //  $('.child')を表示す  //
+        $('#child').empty();                        //  optionを入れる前に空にす  //
+        $('.grand_child').css('display', 'none');   //  $('.grand_child')はまだ表示しません  //
+        $('#child').append(buildPrompt);            //  初期項目"---"にす  //
+        categories.forEach(function(cat) {          //  返ってきたcategoriesでoptionを作成す  //
           var html_option = buildHtmlOption(cat);
           $('#child').append(html_option);
         });

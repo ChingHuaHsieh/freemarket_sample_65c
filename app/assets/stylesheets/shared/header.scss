@@ -236,13 +236,17 @@
               display: block;
             }
           }
-           img {
+          img {
             margin-right: 10px;
             width: 32px;
             border-radius: 50%;
             overflow: hidden;
             vertical-align: middle;
-           }
+          }
+          .hover-img {
+            width: 60px;
+            height: 60px;
+          }
         }
         .notice_num {
           background-color: $red;
@@ -327,7 +331,7 @@
     background-image: image-url('user-bg.jpg');
     background-repeat: no-repeat;
     background-size: 320px 80px;
-    padding: 56px 0 0;
+    padding: 36px 0 0;
     & figcaption {
       margin: 8px 0 0;
       padding: 0 8px;

@@ -11,6 +11,7 @@ $(function() {
   $(document).on('change', 'input[type= "file"].upload-image',function(event){
     var file = $(this).prop('files')[0];
     var reader = new FileReader();
+    console.log($(this))
     inputs.push($(this));
     var img = $(`<div class= "img_view"><img></div>`);
     reader.onload = function(e) {

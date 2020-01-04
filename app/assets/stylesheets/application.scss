@@ -14,7 +14,10 @@
 @import "shared/footer";
 @import "signup/common";
 
-  // products_relation //
+  //  user_relation  //
+@import "signup/signup_main";
+
+  //  products_relation  //
 @import "module/products/show";
 @import "module/products/main";
 @import "module/products/new";

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_052310) do
+ActiveRecord::Schema.define(version: 2020_01_03_124715) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,25 +41,85 @@ ActiveRecord::Schema.define(version: 2019_12_26_052310) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
+  create_table "delivery_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "l_name", null: false
+    t.string "f_name", null: false
+    t.string "l_name_kana", null: false
+    t.string "f_name_kana", null: false
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "block_number", null: false
+    t.string "building_name"
+    t.string "telephone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_delivery_infos_on_user_id"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.string "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
-    t.text "content"
+    t.text "description"
     t.bigint "category_id", null: false
     t.bigint "brand_id"
-    t.integer "goods_status", null: false
-    t.integer "delivery_charge", null: false
-    t.integer "delivery_way", null: false
-    t.integer "from_prefecture", null: false
-    t.integer "delivery_days", null: false
-    t.integer "selling_status", null: false
+    t.integer "goods_status_id", null: false
+    t.integer "delivery_charge_id", null: false
+    t.integer "delivery_way_id", null: false
+    t.integer "from_prefecture_id", null: false
+    t.integer "delivery_days_id", null: false
+    t.integer "price", null: false
+    t.integer "selling_status_id", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "l_name", null: false
+    t.string "f_name", null: false
+    t.string "l_name_kana", null: false
+    t.string "f_name_kana", null: false
+    t.string "phone_num", null: false
+    t.integer "authentication_num", null: false
+    t.integer "birth_yyyy_id", null: false
+    t.integer "birth_mm_id", null: false
+    t.integer "birth_dd_id", null: false
+    t.text "description"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "credit_cards", "users"
+  add_foreign_key "delivery_infos", "users"
+  add_foreign_key "images", "products"
 end
