@@ -34,11 +34,5 @@ $(function() {
   });
 });
 
-// $(function(){
-//   $('.image-sub').mouseover(function(){
-//     var selectedSrc = $(this).attr('src');
-//     $('.image').html(`<img src="${selectedSrc}">`)
-//   });
-// });
 
 

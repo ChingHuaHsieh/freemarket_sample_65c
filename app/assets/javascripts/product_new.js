@@ -11,7 +11,6 @@ $(function() {
   $(document).on('change', 'input[type= "file"].upload-image',function(event){
     var file = $(this).prop('files')[0];
     var reader = new FileReader();
-    console.log($(this))
     inputs.push($(this));
     var img = $(`<div class= "img_view"><img></div>`);
     reader.onload = function(e) {
@@ -87,7 +86,7 @@ $(function() {
     var price = $(this).val();
     var mercari_fee = Math.floor(price * 0.1)
     var seller_gain = price - mercari_fee
-
+    
     if (price >= 300 && price <= 9999999) {
       $('#mercari_fee').text('¥' + mercari_fee.toLocaleString())
       $('#seller_gain').text('¥' + seller_gain.toLocaleString())
