@@ -2,7 +2,7 @@
   %div.header__content
     %div.header__content__up
       %div.header__content__up__left
-        = link_to "#" do
+        = link_to root_path do
           = image_tag 'fmarket_logo_red.svg', alt: 'mercari-logo'
       %div.header__content__up__right
         %form.header__content__up__right__form
@@ -13,7 +13,7 @@
       %div.header__content__bottom__left
         %div.header__content__bottom__left__category
           = link_to "#" do
-            = fa_icon 'list-ul'
+            = icon('fa', 'list-ul ',)
             %span
               カテゴリーから探す
           %ul.header__menu-box--left__parents
@@ -24,7 +24,7 @@
                   = render partial: "category/category_child", collection: parent.children, as: "category"
         %div.header__content__bottom__left__brand
           = link_to "#" do
-            = fa_icon 'tag'
+            = icon('fa', 'tag ',)
             %span ブランドから探す
           %ul.brand__wrapper
             %li.brand
@@ -39,8 +39,78 @@
               %p シュプリーム
             %li.brand
               %p ブランド一覧
-      %div.header__content__bottom__right
-        %div.header__content__bottom__right__signup
-          = link_to '新規会員登録', "#"
-        %div.header__content__bottom__right__login
-          = link_to 'ログイン', "#"
+
+      %ul.header__content__bottom__right
+        %li.header__content__bottom__right__like
+          = link_to root_path, class: "nav-link" do
+            = icon('far', 'heart', class: "nav-icon" )
+            %span いいね！一覧
+        %li.header__content__bottom__right__notice
+          = link_to root_path, class: "nav-link" do
+            = icon('far', 'bell', class: "nav-icon")
+            %span 
+              お知らせ
+            %p.notice_num
+              99+
+        %li.header__content__bottom__right__todo
+          = link_to root_path, class: "nav-link" do
+            = icon('fas', 'check', class: "nav-icon")
+            %span やることリスト
+        %li.header__content__bottom__right__mypage
+          = link_to root_path, class: "nav-link" do
+            = image_tag 'member_photo_noimage.png'
+            %span
+              = link_to 'マイページ', "#", class: "nav-link"
+
+            %div.hover__mypage
+              %div.hover__mypage__content
+                %figure
+                  %div
+                    = image_tag 'member_photo_noimage.png', alt: 'mypage-logo', width: '60px'
+                  %figcaption
+                    UserNickname
+                %ul.hover__mypage__content__info
+                  %li
+                    = link_to '評価: 2', '#'
+                  %li
+                    = link_to "出品数: 99", "#"
+                %ul.hover__mypage__content__point
+                  %li
+                    = link_to '#' do
+                      %div.mypage-list-left 売上金
+                      %div.mypage-list-right
+                        ¥0
+                        = icon 'fas', 'chevron-right'
+                  %li
+                    = link_to '#' do
+                      %div.l-left ポイント
+                      %div.l-right
+                        P0
+                        = icon 'fas', 'chevron-right'
+              %ul.hover__mypage__nav-list
+                %li
+                  = link_to "#", class: 'hover__mypage__nav-list__item' do
+                    出品した商品 - 出品中
+                    = icon 'fas', 'chevron-right'
+                %li
+                  = link_to "#", class: 'hover__mypage__nav-list__item' do
+                    出品した商品 - 取引中
+                    = icon('fas', 'chevron-right')
+                %li
+                  = link_to "#", class: 'hover__mypage__nav-list__item' do
+                    出品した商品 - 売却済み
+                    = icon('fas', 'chevron-right')
+                %li
+                  = link_to '#', class: 'hover__mypage__nav-list__item' do
+                    購入した商品 - 取引中
+                    = icon('fas', 'chevron-right')
+                %li
+                  = link_to '#', class: 'hover__mypage__nav-list__item' do
+                    購入した商品 - 過去の取引
+                    = icon('fas', 'chevron-right')
+
+      -# %div.header__content__bottom__right
+      -#   %div.header__content__bottom__right__signup
+      -#     = link_to '新規会員登録', "#"
+      -#   %div.header__content__bottom__right__login
+      -#     = link_to 'ログイン', "#"

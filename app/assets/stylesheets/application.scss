@@ -1,22 +1,43 @@
+  //  slick_relation //
 @import "slick-theme"; 
 @import "slick";
+
+  // font_awesome_gem_relation  //
 @import "font-awesome-sprockets";
 @import "./font-awesome";
+
 @import "config/reset";
 @import "config/colors";
+
+  //  common_header_footer  //
 @import "shared/header";
 @import "shared/footer";
+@import "signup/common";
+
+  // products_relation //
 @import "module/products/show";
 @import "module/products/main";
+@import "module/products/new";
+@import "module/products/purchase_confirmation";
 @import "module/products/sellbuttom";
 @import "mypage/mypage";
 @import "mypage/mypage.content";
 @import "mypage/mypage.side-bar";
 
 
+
+
 body {
-  background-color: rgb(245, 245, 245);
+  background: #f5f5f5;  
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: #333;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
