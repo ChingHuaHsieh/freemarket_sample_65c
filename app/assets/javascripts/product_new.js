@@ -86,7 +86,7 @@ $(function() {
     var price = $(this).val();
     var mercari_fee = Math.floor(price * 0.1)
     var seller_gain = price - mercari_fee
-
+    
     if (price >= 300 && price <= 9999999) {
       $('#mercari_fee').text('¥' + mercari_fee.toLocaleString())
       $('#seller_gain').text('¥' + seller_gain.toLocaleString())

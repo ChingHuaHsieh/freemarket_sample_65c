@@ -3,8 +3,7 @@
   .product-exhibit-main
     %h2
       商品の情報を入力
-    = form_for "#" do |f|
-      -# = render 'layouts/error_messages', model: f.object
+    = form_for @product do |f|
       .sell-upload-box
         %h3
           出品画像
@@ -14,13 +13,14 @@
           最大5枚までアップロードできます
         .sellbox-form__upload--drop#click-btn
           .sellbox-form__upload--drop--post
-            .dropzone-container
-              #preview
-              .dropzone-area
-                = f.label :images, class: "dropzone-box", for: "upload-image__btn" do
-                  .input_area
-                    %div.input_area__img
-                    = f.file_field :images, multiple: true, id: "upload-image__btn", class: "upload-image", 'data-image': 0, type: "file", name: "product[images_attributes][0][image]"
+            = f.fields_for :image do |image|
+              .dropzone-container
+                #preview
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image__btn" do
+                    .input_area
+                      %div.input_area__img
+                      = image.file_field :image, id: "upload-image__btn", class: "upload-image", 'data-image': 0, type: "file", name: "product[images_attributes][0][image]"
       .sell-content
         .form-group
           %label
@@ -34,7 +34,7 @@
             商品の説明
             %span
               必須
-          = f.text_area :detail, class: "items-new-form-area__default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+          = f.text_area :description, class: "items-new-form-area__default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
       .sell-content.clearfix
         %h3
           商品の詳細
@@ -55,7 +55,7 @@
               %select#child
               %i.fa.fa-angle-down
             .select-wrap.grand_child
-              = f.collection_select(:category, [], :id, :name, {prompt: "---"}, {id: "grand_child"})
+              = f.collection_select(:category_id, [], :id, :name, {prompt: "---"}, {id: "grand_child"})
               %i.fa.fa-angle-down
           .form-group
             %label
@@ -64,7 +64,7 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :goods_status, GoodsStatus.all, :id, :value, {prompt: '---'}
+              = f.collection_select :goods_status_id, GoodsStatus.all, :id, :value, {prompt: '---'}
       .sell-content.clearfix
         %h3
           配送について
@@ -77,7 +77,7 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :delivery_charge, DeliveryCharge.all, :id, :value, {prompt: '---'}
+              = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :value, {prompt: '---'}
           .form-group
             %label
               配送の方法
@@ -85,7 +85,7 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :delivery_way, DeliveryWay.all, :id, :value, {prompt: '---'}
+              = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :value, {prompt: '---'}
           .form-group
             %label
               発送元の地域
@@ -93,7 +93,7 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :from_prefecture, FromPrefecture.all, :id, :name, {prompt: '---'}
+              = f.collection_select :from_prefecture_id, FromPrefecture.all, :id, :name, {prompt: '---'}
           .form-group
             %label
               発送までの日数
@@ -101,7 +101,7 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :delivery_days, DeliveryDays.all, :id, :value, {prompt: '---'}
+              = f.collection_select :delivery_days_id, DeliveryDays.all, :id, :value, {prompt: '---'}
       .sell-content.clearfix
         %h3
           販売価格(300〜9,999,999)

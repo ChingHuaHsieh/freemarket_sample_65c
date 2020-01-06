@@ -4,32 +4,37 @@
     %section.product-show-product-box-container
       %h1
         .product-name
-          Product_name
+          = @product.name
       .product-main-content
         .product-photo
           .image.slider-for
-            = image_tag("product/sample1.jpg", class: "image-sub")
-            = image_tag("product/sample2.jpg", class: "image-sub")
-            = image_tag("product/sample3.jpg", class: "image-sub")
-            = image_tag("product/sample4.jpg", class: "image-sub")
-            = image_tag("product/sample5.jpg", class: "image-sub")
-          %div.soldout-tag_for_show_page
-            %span
-              SOLD
-          .owl-dot
-            .owl-dot__product.current
-              .owl-dot__product__box.slider-nav
-                = image_tag("product/sample1.jpg", class: "image-sub")
-                = image_tag("product/sample2.jpg", class: "image-sub")
-                = image_tag("product/sample3.jpg", class: "image-sub")
-                = image_tag("product/sample4.jpg", class: "image-sub")
-                = image_tag("product/sample5.jpg", class: "image-sub")
+            - @product.images.each.with_index do |image, index|
+              = image_tag image.image_url, class: "image-sub"
+            - unless @product.selling_status_id == 1
+              %div.soldout-tag_for_show_page
+                %span
+                  SOLD
+            - else
+              .none-sold
+          .owl-dot.slider-nav
+            - @product.images.each.with_index do |image, index|
+              - if image.present?
+                .owl-dot__product.current
+                  .owl-dot__product__box
+                    = image_tag image.image_url, class: "image-sub"
+              - else
+                .owl-dot__product
+                  .owl-dot__product__box
+                    = image_tag image.image, class: "image-sub"
+            - if @product.images.length > 5
+              - for i in 1..(10 - @product.images.length)
+                .owl-dot__dummy
         %table.product-detail-table
           %tbody
             %tr
               %th 出品者
               %td
-                = link_to "Product_user_nickname", "#", class: "user-name-string hover-blue";
+                = link_to "#{@product.user.nickname}", "#", class: "user-name-string hover-blue";
                 .product-user-ratings
                   .product-user-rating
                     = image_tag("icon/1.jpg",height: "16px", width: "16px")
@@ -44,61 +49,78 @@
               %th カテゴリー
               %td
                 .product-detail-table-sub.hover-blue
-                  Main_category
+                  #{@product.category.parent.parent.name}
                 .product-detail-table-sub
                 .product-detail-table-sub__sub.hover-blue
                   >
-                  Sub_category
+                  #{@product.category.parent.name}
                 .product-detail-table-sub__sub__sub.hover-blue
                   >
-                  Sub2_category
-            %tr
-              %th ブランド
-              %td
-                = link_to "#" do
-                  .brand-name.hover-blue
-                    Brand_name
+                  #{@product.category.name}
+            -# - if @product.brand.present?
+            -#   %tr
+            -#     %th ブランド
+            -#     %td
+            -#       = link_to "#" do
+            -#         .brand-name.hover-blue
+            -#           #{@product.brand.name}
             %tr
               %th 商品の状態
               %td
                 .product-detail
-                  Product_state
+                  #{@product.goods_status.value}
             %tr
               %th 配送料の負担
               %td
                 .product-detail
-                  Fee_payer
+                  #{@product.delivery_charge.value}
             %tr
               %th 配送の方法
               %td
-                .product-detail らくらくメルカリ便
+                .product-detail
+                  #{@product.delivery_way.value}
             %tr
               %th 発送元地域
               %td
                 .product-detail.prefecture-name.hover-blue
-                  Product_city
+                  #{@product.from_prefecture.name}
             %tr
               %th 配送日の目安
               %td
                 .product-detail
-                  Delivery_time
+                  #{@product.delivery_days.value}
       .product-price-box
         %span.product-price 
-          ¥ 999,999,999
-        %span.product-tax (税込)
-        %span.product-fee_payer
-      = link_to "#" do
-        .product-edit-btn 商品の編集
-        .product-btn-or or
-        .product-stop-btn 出品を一旦停止する
-      = link_to "#" do
-        .product-stop-btn この商品を削除する   
-      -# = link_to "#", data: {turbolinks: false} do
-      -#   .product-buy-btn 購入画面に進む
-      -# .product-buy-btn-sold 売り切れました
-      .product-description
-        %p.product-description__inner
-          Product_detail
+          ¥ #{@product.price}
+        %span.product-tax 
+          (税込)
+        -if @product.delivery_charge_id == 1
+          %span.product-fee_payer
+            送料込み
+      -if user_signed_in?
+        -if @product.user_id == current_user.id
+          = link_to "#", data: {turbolinks: false} do
+            .product-edit-btn 商品の編集
+            .product-btn-or or
+            .product-stop-btn 出品を一旦停止する
+          = link_to "#", method: :delete, data: { turbolinks: false} do
+            .product-stop-btn この商品を削除する   
+        -else 
+          -if @product.selling_status_id == 1
+            = link_to product_purchase_confirmation_path(@product), data: {turbolinks: false} do
+              .product-buy-btn 購入画面に進む
+          -else
+            .product-buy-btn-sold 売り切れました
+      -else
+        -if @product.selling_status_id == 1
+          = link_to "#" do
+            .product-buy-btn 購入画面に進む
+        -else
+          .product-buy-btn-sold 売り切れました
+      -unless user_signed_in? && @product.user_id == current_user.id
+        .product-description
+          %p.product-description__inner
+            = @product.description
         .product-button-container.clearfix
           .product-button-left
             .product-button-like
@@ -106,14 +128,14 @@
                 = fa_icon "heart"
                 %span.fade-in-down いいね!
                 %span.fade-in-down 0
-            .product-button__report
-              = link_to "", class: "product-button__report" do
-                = fa_icon "flag"
-                %span.fade-in-down 不適切な商品の報告            
+          .product-button__report
+            = link_to "", class: "product-button__report" do
+              = fa_icon "flag"
+              %span.fade-in-down 不適切な商品の報告            
           .product-button-right
-            = link_to '#', target: "_blank", class: "safe-description hover-blue" do
+            = link_to 'https://www.mercari.com/jp/safe/description/', target: "_blank", class: "safe-description" do
               = fa_icon "lock"
-              あんぜんへの取り組み
+              あんしん・あんぜんへの取り組み
     .message-content
     .message-content__box__form
       .product-message-content
