@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   
   devise_for :users
   root 'products#index'
+  resources :products, only: [:show, :index] do
+  end
+
+  resources :mypage, only: [:index, :show] do
+  end
 
   resources :delivery_infos, only: [:new, :create]
 
