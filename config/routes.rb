@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   end
 
   resources :mypage, only: [:index, :show] do
+    collection do
+      get 'logout'
+    end
   end
 
   resources :delivery_infos, only: [:new, :create]
