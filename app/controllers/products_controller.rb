@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
 
-  before_action :set_product, only: [:show, :purchase_confirmation, :purchase_done, :pay]
+  before_action :set_product, only: [:show, :purchase_confirmation, :purchase_done, :pay, :edit, :update]
   before_action :set_category, only: [:index, :show, :new]
   before_action :set_delivery_info, only: [:purchase_confirmation, :purchase_done]
 
@@ -57,6 +57,25 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @images = @product.images
+    @image = @images.first
+  end
+
+  def update
+    if params[:product][:images_attributes] == nil
+      @product.update(product_update_params)
+      redirect_to action: 'show'
+    else
+      @product.images.destroy_all
+      if @product.update(product_params)
+        redirect_to action: 'show'
+      else
+        redirect_to(edit_product_path, notice: '編集できませんでした')
+      end
+    end
+  end
+
   private
   def product_params
     params.require(:product).permit(
@@ -70,6 +89,20 @@ class ProductsController < ApplicationController
       :delivery_days_id,
       :price,
       images_attributes: [:image]
+      ).merge(user_id: current_user.id)
+  end
+
+  def product_update_params
+    params.require(:product).permit(
+      :name,
+      :description,
+      :category_id,
+      :goods_status_id,
+      :delivery_charge_id,
+      :delivery_way_id,
+      :from_prefecture_id,
+      :delivery_days_id,
+      :price
       ).merge(user_id: current_user.id)
   end
 

@@ -10,12 +10,12 @@
           .image.slider-for
             - @product.images.each.with_index do |image, index|
               = image_tag image.image_url, class: "image-sub"
-            - unless @product.selling_status_id == 1
-              %div.soldout-tag_for_show_page
-                %span
-                  SOLD
-            - else
-              .none-sold
+          - unless @product.selling_status_id == 1
+            %div.soldout-tag_for_show_page
+              %span
+                SOLD
+          - else
+            .none-sold
           .owl-dot.slider-nav
             - @product.images.each.with_index do |image, index|
               - if image.present?
@@ -99,7 +99,7 @@
             送料込み
       -if user_signed_in?
         -if @product.user_id == current_user.id
-          = link_to "#", data: {turbolinks: false} do
+          = link_to edit_product_path, method: "GET", data: {turbolinks: false} do
             .product-edit-btn 商品の編集
             .product-btn-or or
             .product-stop-btn 出品を一旦停止する
@@ -120,7 +120,7 @@
       -unless user_signed_in? && @product.user_id == current_user.id
         .product-description
           %p.product-description__inner
-            = @product.description
+            = simple_format @product.description
         .product-button-container.clearfix
           .product-button-left
             .product-button-like
