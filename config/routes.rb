@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [ :index, :new, :create, :show] do
+  resources :products, only: [ :index, :new, :create, :show, :edit, :update] do
     member do
       # 商品購入の流れ
       get 'purchase_confirmation'
