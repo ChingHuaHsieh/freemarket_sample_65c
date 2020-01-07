@@ -2,12 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'products#index'
-  
-  resources :mypage, only: [:index, :show] do
-    collection do
-      get 'profile'
-    end
-  end
 
   resources :delivery_infos, only: [:new, :create]
 
@@ -32,6 +26,7 @@ Rails.application.routes.draw do
   resources :mypage, only: [:index] do
     collection do
       get 'logout'
+      get 'profile'
     end
   end
 
