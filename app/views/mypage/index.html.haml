@@ -1,5 +1,7 @@
 .mypage-main-container
   = render 'products/header'
+  - breadcrumb :mypage
+  = render 'mypage/bread-crumbs'
   %main.mypage-container.clearfix
     = render 'side-bar'
     = render 'main-content' 
