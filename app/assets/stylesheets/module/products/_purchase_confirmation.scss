@@ -146,6 +146,11 @@
         text-align: left;
         margin: 0;
         border-top: 1px solid $background_grey;
+        .grey_btn {
+          background-color: $text-grey;
+          border: 1px solid $text-grey;
+          
+        }
         &__upper-text {
           padding-bottom: 24px;
           line-height: 1.5;

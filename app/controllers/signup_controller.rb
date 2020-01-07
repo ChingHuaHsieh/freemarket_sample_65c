@@ -11,7 +11,7 @@ class SignupController < ApplicationController
   end
 
   def sms_confirmation
-    #  step1で入力された値をsessionに保存
+    # step1で入力された値をsessionに保存
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -23,8 +23,7 @@ class SignupController < ApplicationController
     session[:birth_yyyy_id] = user_params[:birth_yyyy_id]
     session[:birth_mm_id] = user_params[:birth_mm_id]
     session[:birth_dd_id] = user_params[:birth_dd_id]
-    #  新規インスタンス作成
-    @user = User.new( 
+    @user = User.new( #  新規インスタンス作成
       nickname: session[:nickname],
       email: session[:email],
       password: session[:password],
@@ -110,7 +109,7 @@ class SignupController < ApplicationController
     end
   end
 
-  def done
+  def done #登録流れが終了、signinをす
     sign_in User.find(session[:id]) unless user_signed_in?
   end
 

@@ -5,15 +5,16 @@
   %div.item-info
     %div.item-info__inner
       %div.item-info__inner__box
-        = image_tag "product/sample1.jpg", height: "80px" , width: "80px"
+        = image_tag @image.image_url, height: "80px" , width: "80px"
         %div.item-info__inner__box__right
           %p.item-info__inner__box__right__name
-            NAME
+            = @product.name
           %p.item-info__inner__box__right__price
             %span
-              ¥9,999
-            %span
-              （税込）送料込み
+              ¥ #{@product.price}
+            -if @product.delivery_charge_id == 1
+              %span
+                （税込）送料込み
   %div.buy-detail
     %div.buy-detail__inner
       %form.buy-detail__inner__form
@@ -23,7 +24,7 @@
               支払い金額
             %div.buy-detail__inner__form__price__right
               %span
-                ¥9,999
+                ¥ #{@product.price}
         %ul.buy-detail__inner__form__point
           %li
             %div.buy-detail__inner__form__point__content
@@ -40,9 +41,11 @@
                 %span
                 %i.fa.fa-chevron-right
             %div.user-info-text
-              **** **** **** 1234
+              **** **** **** #{@default_card_information.last4}
               %br
-              12 / 12
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,2)
+              = exp_month + " / " + exp_year
         %div.buy-detail__inner__form__user-info
           %div.buy-detail__inner__form__user-info__inner
             %div.user-info-top
@@ -53,22 +56,31 @@
                 %span
                 %i.fa.fa-chevron-right
             %div.user-info-text
-              PostalCode
+              = "〒" + @delivery_info.postal_code.to_s
               %br
-              AddressesPrefecture_City_Street_Building
+              = @delivery_info.prefecture.name + @delivery_info.city + @delivery_info.block_number + @delivery_info.building_name
               %br
-              UserName
-        %section.buy-detail__inner__form__bottom
-          %p.buy-detail__inner__form__bottom__upper-text
-            この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
-          = link_to "#" do
-            %bottom
-              購入する
+              = @delivery_info.l_name + " " + @delivery_info.f_name
+        
+        
+        - if @product.selling_status_id == 4
+          %section.buy-detail__inner__form__bottom
+            = link_to root_path, method: "GET" do
+              %bottom.grey_btn
+                取引が終了したアイテムです
+        - else
+          %section.buy-detail__inner__form__bottom
+            %p.buy-detail__inner__form__bottom__upper-text
+              この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+            = link_to pay_product_path, method: "POST" do
+              %bottom
+                購入する
           %p.buy-detail__inner__form__bottom__bottom-text
             アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
-        %div.buy-detail__inner__form__app
-          = link_to "#" do
-            = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3135490372", width: "130px")
-          = link_to "#" do
-            = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3135490372", width: "130px")
+        - unless @product.selling_status_id == 4
+          %div.buy-detail__inner__form__app
+            = link_to "#" do
+              = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3135490372", width: "130px")
+            = link_to "#" do
+              = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3135490372", width: "130px")
 =render 'shared/login_footer'
