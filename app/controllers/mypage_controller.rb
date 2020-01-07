@@ -8,4 +8,8 @@ class MypageController < ApplicationController
     @parents = Category.all.order("id ASC").limit(13)
   end
 
+  def profile
+    @parents = Category.all.order("id ASC").limit(13)
+  end
+
 end
