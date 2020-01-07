@@ -1,5 +1,7 @@
 .mypage-main-container
   = render 'products/header'
+  - breadcrumb :user_sign_out
+  = render 'mypage/bread-crumbs'
   %main.mypage-container.clearfix
     = render 'mypage/side-bar'
     .mypage-content
