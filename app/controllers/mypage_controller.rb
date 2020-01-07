@@ -1,11 +1,9 @@
 class MypageController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: [:index, :show, :logout]
-
+  before_action :set_category, only: [:index, :logout]
 
   def index
   end
-
 
   def logout
   end
