@@ -9,6 +9,9 @@ class MypageController < ApplicationController
   end
 
   def profile
+  end
+  
+  def logout
     @parents = Category.all.order("id ASC").limit(13)
   end
 

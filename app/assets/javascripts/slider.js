@@ -15,7 +15,7 @@ $(function() {
   });
 });
 
- //  product_show_slick  //
+  //  product_show_slick  //
 
 $(function() {
   $('.slider-for').slick({
@@ -33,6 +33,3 @@ $(function() {
     focusOnSelect: true,
   });
 });
-
-
-

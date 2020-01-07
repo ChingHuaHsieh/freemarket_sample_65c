@@ -1,0 +1,12 @@
+.mypage-main-container
+  = render 'products/header'
+  %main.mypage-container.clearfix
+    = render 'mypage/side-bar'
+    .mypage-content
+      .mypage-content__chapter-container
+        .signup-main__inner
+          .signup-main__content
+            = link_to '#', class: 'signup-main__btn-default signup-main__btn-red', id: "logout-btn" do
+              ログアウト
+  = render 'products/footer'
+  = render 'products/sellbuttom'

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
   devise_for :users
+
   root 'products#index'
   
   resources :mypage, only: [:index, :show] do
@@ -20,10 +20,21 @@ Rails.application.routes.draw do
       get 'registration'
       get 'sms_confirmation'
       get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
-      get 'address'
       get 'credit_card'
       get 'done'
       post 'pay'
+    end
+  end
+
+  resources :delivery_infos, only: [:new, :create]
+
+  resources :mypage, only: [:index, :show]
+
+  resources :products, only: [:new, :show, :index, :create] do
+    member do
+      get 'purchase_confirmation'
+      post 'pay'
+      get 'purchase_done'
     end
   end
 
