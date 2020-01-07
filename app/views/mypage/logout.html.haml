@@ -6,7 +6,7 @@
       .mypage-content__chapter-container
         .signup-main__inner
           .signup-main__content
-            = link_to '#', class: 'signup-main__btn-default signup-main__btn-red', id: "logout-btn" do
+            = link_to destroy_user_session_path, method: 'delete', class: 'signup-main__btn-default signup-main__btn-red', id: "logout-btn" do
               ログアウト
   = render 'products/footer'
   = render 'products/sellbuttom'

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'registration'
       get 'sms_confirmation'
       get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
+      # signupのstep4住所入力はdelivery_infos_controllerで行う
       get 'credit_card'
       get 'done'
       post 'pay'
@@ -16,10 +17,15 @@ Rails.application.routes.draw do
 
   resources :delivery_infos, only: [:new, :create]
 
-  resources :mypage, only: [:index, :show]
+  resources :mypage, only: [:index] do
+    collection do
+      get 'logout'
+    end
+  end
 
-  resources :products, only: [:new, :show, :index, :create] do
+  resources :products, only: [ :index, :new, :create, :show] do
     member do
+      # 商品購入の流れ
       get 'purchase_confirmation'
       post 'pay'
       get 'purchase_done'

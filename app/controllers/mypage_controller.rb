@@ -1,15 +1,16 @@
 class MypageController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_category, only: [:index, :show, :logout]
+
 
   def index
-    @parents = Category.all.order("id ASC").limit(13)
   end
 
-  def show
-    @parents = Category.all.order("id ASC").limit(13)
-  end
 
   def logout
-    @parents = Category.all.order("id ASC").limit(13)
   end
 
+  def set_category
+    @parents = Category.all.order("id ASC").limit(13)
+  end
 end
