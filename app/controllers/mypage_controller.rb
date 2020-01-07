@@ -1,6 +1,6 @@
 class MypageController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: [:index, :logout, :profile]
+  before_action :set_category, only: [:index, :logout, :profile, :identification]
 
   def index
   end
@@ -9,6 +9,9 @@ class MypageController < ApplicationController
   end
 
   def profile
+  end
+
+  def identification
   end
 
   def set_category

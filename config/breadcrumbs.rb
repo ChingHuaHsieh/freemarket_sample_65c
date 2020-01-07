@@ -13,7 +13,7 @@ crumb :user_sign_out do
 end
 
 crumb :mypage_identification do
-  link '本人情報の確認'
+  link '本人情報の登録'
   parent :mypage
 end
 
