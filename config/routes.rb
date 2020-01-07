@@ -3,6 +3,18 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
+  resources :mypage, only: [:index, :show] do
+    collection do
+      get 'profile'
+    end
+  end
+
+  resources :delivery_infos, only: [:new, :create]
+
+  resources :products, only: [:new, :show, :index, :create] do
+    get 'purchase_confirmation'
+  end
+
   resources :signup, only: [:index, :create] do
     collection do
       get 'registration'
