@@ -19,7 +19,7 @@
                 = @product.name
             %form.buy-form
               %p.buy-price
-                ¥ #{@product.price}
+                ¥ #{converting_to_jpy(@product.price)}
                 -if @product.delivery_charge_id == 1
                   %span
                 （税込）送料込み

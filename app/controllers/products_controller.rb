@@ -3,20 +3,22 @@ class ProductsController < ApplicationController
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
 
-  before_action :set_product, only: [:show, :purchase_confirmation, :purchase_done, :pay, :edit, :update]
+  before_action :set_product, only: [:show, :purchase_confirmation, :purchase_done, :pay, :edit, :update, :destroy]
   before_action :set_category, only: [:index, :show, :new]
   before_action :set_delivery_info, only: [:purchase_confirmation, :purchase_done]
 
+  # toppage
   def index
   end
 
-  def show
-    @images = @product.images
-    @image = @images.first
+  # 商品詳細
+  def show 
+    @images = @product.images.order(id: "DESC")
   end
 
+  # 商品購入
   def purchase_confirmation
-    @image = @product.images.first
+    @image = @product.images.order(id: "DESC").first
     card = CreditCard.find_by(user_id: current_user.id)
     if card.blank?
       redirect_to action: '/signup/credit_card'
@@ -38,12 +40,13 @@ class ProductsController < ApplicationController
   end
 
   def purchase_done
-    @image = @product.images.first
+    @image = @product.images.order(id: "DESC").first
     card = CreditCard.find_by(user_id: current_user.id)
     customer = Payjp::Customer.retrieve(card.customer_id)
     @default_card_information = customer.cards.retrieve(card.card_id)
   end
   
+  # 商品出品
   def new
     @product = Product.new
   end
@@ -57,9 +60,8 @@ class ProductsController < ApplicationController
     end
   end
 
+  # 商品編集
   def edit
-    @images = @product.images
-    @image = @images.first
   end
 
   def update
@@ -74,6 +76,12 @@ class ProductsController < ApplicationController
         redirect_to(edit_product_path, notice: '編集できませんでした')
       end
     end
+  end
+
+  # 商品削除
+  def destroy
+    @product.destroy if @product.user_id == current_user.id
+    redirect_to controller: :products, action: :index
   end
 
   private
@@ -92,6 +100,7 @@ class ProductsController < ApplicationController
       ).merge(user_id: current_user.id)
   end
 
+  # 商品編集用
   def product_update_params
     params.require(:product).permit(
       :name,
@@ -111,9 +120,8 @@ class ProductsController < ApplicationController
   end
   
   def set_category
-    @parents = Category.all.order("id ASC").limit(13)
+    @parents = Category.all.order(id: "ASC").limit(13)
   end
-
   
   def set_delivery_info
     @delivery_info = DeliveryInfo.find_by(user_id: current_user.id)

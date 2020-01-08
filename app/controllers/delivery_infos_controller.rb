@@ -1,5 +1,6 @@
 class DeliveryInfosController < ApplicationController
 
+  # STEP4 配送情報
   def new
     @delivery_info = DeliveryInfo.new
   end
