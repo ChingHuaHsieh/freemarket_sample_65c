@@ -10,8 +10,8 @@ Rails.application.routes.draw do
       get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
       # signupのstep4住所入力はdelivery_infos_controllerで行う
       get 'credit_card'
-      get 'done'
       post 'pay'
+      get 'done'
     end
   end
 
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [ :index, :new, :create, :show, :edit, :update] do
+  resources :products do
     member do
       # 商品購入の流れ
       get 'purchase_confirmation'
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # 出品時に使用
   namespace :api do
     resources "products", controller: :products, only: :child, defaults: { format: 'json' } do
       collection do

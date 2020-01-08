@@ -8,7 +8,7 @@
       .product-main-content
         .product-photo
           .image.slider-for
-            - @product.images.each.with_index do |image, index|
+            - @images.each.with_index do |image, index|
               = image_tag image.image_url, class: "image-sub"
           - unless @product.selling_status_id == 1
             %div.soldout-tag_for_show_page
@@ -17,7 +17,7 @@
           - else
             .none-sold
           .owl-dot.slider-nav
-            - @product.images.each.with_index do |image, index|
+            - @images.each.with_index do |image, index|
               - if image.present?
                 .owl-dot__product.current
                   .owl-dot__product__box
@@ -91,7 +91,7 @@
                   #{@product.delivery_days.value}
       .product-price-box
         %span.product-price 
-          ¥ #{@product.price}
+          ¥ #{converting_to_jpy(@product.price)}
         %span.product-tax 
           (税込)
         -if @product.delivery_charge_id == 1
@@ -99,11 +99,11 @@
             送料込み
       -if user_signed_in?
         -if @product.user_id == current_user.id
-          = link_to edit_product_path, method: "GET", data: {turbolinks: false} do
+          = link_to edit_product_path(@product), method: "GET", data: {turbolinks: false} do
             .product-edit-btn 商品の編集
             .product-btn-or or
             .product-stop-btn 出品を一旦停止する
-          = link_to "#", method: :delete, data: { turbolinks: false} do
+          = link_to product_path(@product), method: "delete", id: "destroy_btn", data: { turbolinks: false} do
             .product-stop-btn この商品を削除する   
         -else 
           -if @product.selling_status_id == 1

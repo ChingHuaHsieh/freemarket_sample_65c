@@ -11,7 +11,7 @@
             = @product.name
           %p.item-info__inner__box__right__price
             %span
-              ¥ #{@product.price}
+              ¥ #{converting_to_jpy(@product.price)}
             -if @product.delivery_charge_id == 1
               %span
                 （税込）送料込み
@@ -24,7 +24,7 @@
               支払い金額
             %div.buy-detail__inner__form__price__right
               %span
-                ¥ #{@product.price}
+                ¥ #{converting_to_jpy(@product.price)}
         %ul.buy-detail__inner__form__point
           %li
             %div.buy-detail__inner__form__point__content
@@ -73,7 +73,7 @@
             %p.buy-detail__inner__form__bottom__upper-text
               この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
             = link_to pay_product_path, method: "POST" do
-              %bottom
+              %bottom#buy_btn
                 購入する
           %p.buy-detail__inner__form__bottom__bottom-text
             アプリをお持ちでない方は以下よりインストールしてご利用いただけます。

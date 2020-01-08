@@ -1,17 +1,21 @@
 class SignupController < ApplicationController
 
+  # PAYJP、SECRET_KEYを読み込み
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
 
+  # STEP1 登録方法
   def index
   end
 
+  # STEP2 会員情報入力
   def registration
     @user = User.new
   end
 
+  # STEP3 電話
   def sms_confirmation
-    # step1で入力された値をsessionに保存
+    # STEP2で入力された値をsessionに保存
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -41,6 +45,7 @@ class SignupController < ApplicationController
     render '/signup/registration' unless @user.valid?
   end
 
+  # STEP4 認証番号
   def sms_confirmation_sms
     session[:phone_num] = user_params[:phone_num]
     @user = User.new(
@@ -86,10 +91,13 @@ class SignupController < ApplicationController
     end
   end
 
+  # STEP5 配送情報がdelivery_infos_controllerで行う
+  # STEP6 カート情報
   def credit_card
   end
 
-  def pay #payjpとCardのデータベース作成を実施します。
+  #payjpとCardのデータベース作成を実施します。
+  def pay 
     if params['payjp-token'].blank?
       redirect_to action: 'credit_card'
     else
@@ -109,7 +117,8 @@ class SignupController < ApplicationController
     end
   end
 
-  def done #登録流れが終了、signinをす
+  # 登録流れが終了、signinをす
+  def done 
     sign_in User.find(session[:id]) unless user_signed_in?
   end
 
