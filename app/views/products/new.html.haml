@@ -16,6 +16,7 @@
             = f.fields_for :image do |image|
               .dropzone-container
                 #preview
+                #preview2
                 .dropzone-area
                   = image.label :image, class: "dropzone-box", for: "upload-image__btn" do
                     .input_area
@@ -28,13 +29,21 @@
             %span
               必須
           %div
-            = f.text_field :name, id: "input-default",  placeholder: "商品名（必須 40文字まで)"
+            - if @product.errors.full_messages_for(:name).any?
+              = f.text_field :name, class: "red_border", id: "input-default",  placeholder: "商品名（必須 40文字まで)"
+            - else
+              = f.text_field :name, id: "input-default",  placeholder: "商品名（必須 40文字まで)"
+            =  render partial: 'products/error-messages', locals: { product: @product, column: "name"}
         .form-group
           %label
             商品の説明
             %span
               必須
-          = f.text_area :description, class: "items-new-form-area__default", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+          - if @product.errors.full_messages_for(:description).any?
+            = f.text_area :description, class: "items-new-form-area__default red_border", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+          -else
+            = f.text_area :description, class: "items-new-form-area__default ", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5"
+          =  render partial: 'products/error-messages', locals: { product: @product, column: "description"}
       .sell-content.clearfix
         %h3
           商品の詳細
@@ -46,11 +55,19 @@
                 必須
             %span.required
             .select-wrap.parent.select-wrap
-              %select#parent
-                %option{value: 0} ---
-                - Category.where('ancestry IS NULL').each do |cat|
-                  %option{value: "#{cat.id}"} #{cat.name}
-              %i.fa.fa-angle-down
+              - if @product.errors.full_messages_for(:category_id).any?
+                %select#parent.red_border
+                  %option{value: 0} ---
+                  - Category.where('ancestry IS NULL').each do |cat|
+                    %option{value: "#{cat.id}"} #{cat.name}
+                %i.fa.fa-angle-down
+              - else
+                %select#parent
+                  %option{value: 0} ---
+                  - Category.where('ancestry IS NULL').each do |cat|
+                    %option{value: "#{cat.id}"} #{cat.name}
+                %i.fa.fa-angle-down
+            =  render partial: 'products/error-messages', locals: { product: @product, column: "category_id"}
             .select-wrap.child
               %select#child
               %i.fa.fa-angle-down
@@ -64,7 +81,11 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :goods_status_id, GoodsStatus.all, :id, :value, {prompt: '---'}
+              - if @product.errors.full_messages_for(:goods_status_id).any?
+                = f.collection_select :goods_status_id, GoodsStatus.all, :id, :value, {prompt: '---'}, {class: "red_border"}
+              - else
+                = f.collection_select :goods_status_id, GoodsStatus.all, :id, :value, {prompt: '---'}
+            =  render partial: 'products/error-messages', locals: { product: @product, column: "goods_status_id"}
       .sell-content.clearfix
         %h3
           配送について
@@ -77,7 +98,11 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :value, {prompt: '---'}
+              - if @product.errors.full_messages_for(:delivery_charge_id).any?
+                = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :value, {prompt: '---'}, {class: "red_border"}
+              - else
+                = f.collection_select :delivery_charge_id, DeliveryCharge.all, :id, :value, {prompt: '---'}
+            =  render partial: 'products/error-messages', locals: { product: @product, column: "delivery_charge_id"}
           .form-group
             %label
               配送の方法
@@ -85,7 +110,11 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :value, {prompt: '---'}
+              - if @product.errors.full_messages_for(:delivery_way_id).any?
+                = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :value, {prompt: '---'}, {class: "red_border"}
+              - else
+                = f.collection_select :delivery_way_id, DeliveryWay.all, :id, :value, {prompt: '---'}
+            =  render partial: 'products/error-messages', locals: { product: @product, column: "delivery_way_id"}
           .form-group
             %label
               発送元の地域
@@ -93,7 +122,11 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :from_prefecture_id, FromPrefecture.all, :id, :name, {prompt: '---'}
+              - if @product.errors.full_messages_for(:from_prefecture_id).any?
+                = f.collection_select :from_prefecture_id, FromPrefecture.all, :id, :name, {prompt: '---'}, {class: "red_border"}
+              - else
+                = f.collection_select :from_prefecture_id, FromPrefecture.all, :id, :name, {prompt: '---'}
+            =  render partial: 'products/error-messages', locals: { product: @product, column: "from_prefecture_id"}
           .form-group
             %label
               発送までの日数
@@ -101,7 +134,11 @@
                 必須
             .select-wrap
               %i.fa.fa-angle-down
-              = f.collection_select :delivery_days_id, DeliveryDays.all, :id, :value, {prompt: '---'}
+              - if @product.errors.full_messages_for(:delivery_days_id).any?
+                = f.collection_select :delivery_days_id, DeliveryDays.all, :id, :value, {prompt: '---'}, {class: "red_border"}
+              - else
+                = f.collection_select :delivery_days_id, DeliveryDays.all, :id, :value, {prompt: '---'}
+            =  render partial: 'products/error-messages', locals: { product: @product, column: "delivery_days_id"}
       .sell-content.clearfix
         %h3
           販売価格(300〜9,999,999)
@@ -119,7 +156,11 @@
                   %p
                     ¥
                   %div
-                    = f.text_field :price, min:300, max:9999999, class: "input-default", id: "sell-price", placeholder: "例）300", value: ""
+                    - if @product.errors.full_messages_for(:price).any?
+                      = f.text_field :price, min:300, max:9999999, class: "input-default red_border", id: "sell-price", placeholder: "例）300", value: ""
+                    - else
+                      = f.text_field :price, min:300, max:9999999, class: "input-default", id: "sell-price", placeholder: "例）300", value: ""
+              =  render partial: 'products/error-messages', locals: { product: @product, column: "price"}
             %li.price-group.border
               .clear-fix
                 .sell-price-title

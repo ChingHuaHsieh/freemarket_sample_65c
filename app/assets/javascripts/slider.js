@@ -17,19 +17,30 @@ $(function() {
 
   //  product_show_slick  //
 
-$(function() {
-  $('.slider-for').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplaySpeed: 3500,
-    arrows: false,
-    fade: true,
-    asNavFor: '.slider-nav'
-  });
-  $('.slider-nav').slick({
-    slidesToShow: $('.owl-dot').children('.owl-dot__product').length, //  中身の写真数により変更  //
-    slidesToScroll: 1,
-    asNavFor: '.slider-for',
-    focusOnSelect: true,
+// $(function() {
+//   $('.slider-for').slick({
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     autoplaySpeed: 3500,
+//     arrows: false,
+//     fade: true,
+//     asNavFor: '.slider-nav'
+//   });
+//   $('.slider-nav').slick({
+//     slidesToShow: $('.owl-dot').children('.owl-dot__product').length, //  中身の写真数により変更  //
+//     slidesToScroll: 1,
+//     asNavFor: '.slider-for',
+//     focusOnSelect: true,
+
+//     slidesToShow: 5, //  中身の写真数により変更  //
+//     // rows: 2 ,
+//     // slidesPerRow: 5,
+//   });
+// });
+
+$(function(){
+  $('.image-sub').mouseover(function(){
+    var selectedSrc = $(this).attr('src');
+    $('.image').html(`<img src="${selectedSrc}">`)
   });
 });

@@ -8,8 +8,11 @@
       .product-main-content
         .product-photo
           .image.slider-for
-            - @images.each.with_index do |image, index|
-              = image_tag image.image_url, class: "image-sub"
+            //  mouseoverの場合使用  //
+            = image_tag @image.image_url
+            //  slickの場合使用  //
+            -# - @images.each.with_index do |image, index|
+            -#   = image_tag image.image_url, class: "image-sub"
           - unless @product.selling_status_id == 1
             %div.soldout-tag_for_show_page
               %span
@@ -110,13 +113,13 @@
             = link_to purchase_confirmation_product_path(@product), data: {turbolinks: false} do
               .product-buy-btn 購入画面に進む
           -else
-            .product-buy-btn-sold 売り切れました
+            .product-buy-btn-sold#soldout_btn 売り切れました
       -else
         -if @product.selling_status_id == 1
-          = link_to "#" do
+          = link_to purchase_confirmation_product_path(@product) do
             .product-buy-btn 購入画面に進む
         -else
-          .product-buy-btn-sold 売り切れました
+          .product-buy-btn-sold#soldout_btn  売り切れました
       -unless user_signed_in? && @product.user_id == current_user.id
         .product-description
           %p.product-description__inner

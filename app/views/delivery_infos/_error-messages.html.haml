@@ -1,4 +1,4 @@
-- if @delivery_info.errors.any?
+- if delivery_info.errors.any?
   - unless delivery_info.valid?
     - if errors = delivery_info.errors.full_messages_for(column.to_sym)
       %ul.signup-main__has-error-text

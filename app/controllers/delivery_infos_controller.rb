@@ -10,7 +10,7 @@ class DeliveryInfosController < ApplicationController
     if @delivery_info.save
       redirect_to credit_card_signup_index_path
     else
-      redirect_to '/delivery_infos/new' unless @delivery_info.valid?
+      render '/delivery_infos/new' unless @delivery_info.valid?
     end
   end
   

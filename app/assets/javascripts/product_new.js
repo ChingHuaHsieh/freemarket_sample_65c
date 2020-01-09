@@ -25,11 +25,28 @@ $(function() {
       $('.input_area__img').css('background-image', 'url()');
       $.each(images, function(index, image) {
         image.attr('data-image', index);
-        preview.append(image);
+        if (index < 5 ){
+          $('#preview').append(image);
+        } else if (index >= 5){
+          $('#preview2').append(image);
+        }
       })
-      dropzone.css({
-        'width': `calc(100% - (120px * ${images.length}))`
-      })
+      var len = images.length % 5;
+      if(images.length <= 9){
+        dropzone.css({
+          'width': `calc(100% - (120px * ${len}))`
+        })
+      } else if ( images.length >= 10) {
+        dropzone.css({
+          'display': `none`
+        })
+      }
+      if(images.length >= 5) {
+        $('.sell-upload-box').css({
+          'height': `490px`
+        })
+      }
+      
       if(images.length == 5) {
         $(".dropzone-area").attr('id', 'nothing');
       }

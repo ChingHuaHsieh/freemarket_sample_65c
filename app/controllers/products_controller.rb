@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
 
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :purchase_confirmation, :purchase_done, :pay, :edit, :update, :destroy]
   before_action :set_category, only: [:index, :show, :new]
   before_action :set_delivery_info, only: [:purchase_confirmation, :purchase_done]
@@ -14,6 +15,7 @@ class ProductsController < ApplicationController
   # 商品詳細
   def show 
     @images = @product.images.order(id: "DESC")
+    @image = @product.images.order(id: "DESC").first
   end
 
   # 商品購入
@@ -56,7 +58,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      redirect_to new_product_path unless @product.valid?
+      render new_product_path unless @product.valid?
     end
   end
 

@@ -67,6 +67,45 @@
             }
           }
         }
+        #preview2 {
+          display: inline-block;
+          float: left;
+          .img_view {
+            height: 170px;
+            display: inline-block;
+            margin: 1px;
+            background: $background_grey;
+            img {
+              padding-top:20px;
+              position: static;
+              height: 114px;
+              width: 116px;
+              overflow: hidden;
+            }
+            .upload-image__prev--btn {
+              margin-top:20px;
+              font-size: 14px;
+              display: flex;
+              width: 100%;
+              background: $background_grey;
+              .edit-btn {
+                display: inline-block;
+                line-height: 32px;
+                width: 50%;
+                text-align: center;  
+                color: $sky_blue;
+              }
+              .delete-btn {
+                display: inline-block;
+                line-height: 32px;
+                width: 50%;
+                text-align: center;  
+                color: $sky_blue;
+                border-left: 1px solid #eee;
+              }
+            }
+          }
+        }
         .dropzone-area {
           float: right;
           box-sizing: border-box;
@@ -323,3 +362,7 @@
 }
 
 .alert { padding:12px; font-weight:850; color:#262626; background:#FFEBE8; border:2px solid #990000; }
+
+.red_border {
+  border: 1px solid $red !important;
+}
