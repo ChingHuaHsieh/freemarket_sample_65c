@@ -1,0 +1,45 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      delivery_info: 配送情報
+      product: 商品
+    attributes:
+        user:
+          id: ID
+          nickname: ニックネーム
+          email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード(確認)
+          l_name: 苗字
+          f_name: 名前
+          l_name_kana: 苗字(カナ)
+          f_name_kana: 名前(かな)
+          phone_num: 電話番号
+          authentication_num: 認証番号
+          birth_yyyy_id: 生年月日(年)
+          birth_mm_id: 生年月日(月)
+          birth_dd_id: 生年月日(日)
+          description: 自己紹介
+        delivery_info:
+          l_name: 苗字
+          f_name: 名前
+          l_name_kana: 苗字(カナ)
+          f_name_kana: 名前(かな)
+          postal_code: 郵便番号
+          prefecture_id: 都道府県
+          city: 市区町村
+          block_number: 番地
+          building_name: 建物名
+          telephone: 電話番号
+        product:
+          name: 商品名
+          description: 商品の説明
+          category_id: カテゴリー
+          brand_id: ブランド
+          goods_status_id: 商品の状態
+          delivery_charge_id: 配送料の負担
+          delivery_way_id: 配送の方法
+          from_prefecture_id: 発送元の地域
+          delivery_days_id: 発送までの日数
+          price: 価格

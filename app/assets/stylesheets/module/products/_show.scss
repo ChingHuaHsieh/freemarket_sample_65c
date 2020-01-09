@@ -42,10 +42,11 @@
         //サムネイル画像
         .owl-dot {
           line-height: 0;
-          height: 60px;
-          width: 400px;
+          height: 120px;
+          width: 300px;
           padding: 0px;
           display: flex;
+          flex-wrap: wrap;
           &__product {
             display: flex;
           }

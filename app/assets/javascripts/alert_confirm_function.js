@@ -27,4 +27,10 @@ $(function (){
       return false;
     }
   });
+
+  //  when_click_soldout_btn  //
+
+  $("#soldout_btn").on("click", function() {
+    alert("すでに売り切れました。");
+  });
 });
