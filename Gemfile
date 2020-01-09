@@ -100,6 +100,8 @@ gem 'pry-rails'
   #  creditcard  #
 gem 'payjp'
 
+  #  パンくず  #
 gem 'gretel'
 
+  #  validationを日本語に  #
 gem 'rails-i18n', '~> 5.1'

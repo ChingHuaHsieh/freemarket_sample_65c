@@ -23,15 +23,14 @@ $(function() {
       images.push(img);
       $('#preview').empty();
       $('.input_area__img').css('background-image', 'url()');
-        $.each(images, function(index, image) {
-          image.attr('data-image', index);
-          if (index < 5 ){
-            $('#preview').append(image);
-          } else if (index >= 5){
-            $('#preview2').append(image);
-          }
-        })
-
+      $.each(images, function(index, image) {
+        image.attr('data-image', index);
+        if (index < 5 ){
+          $('#preview').append(image);
+        } else if (index >= 5){
+          $('#preview2').append(image);
+        }
+      })
       var len = images.length % 5;
       if(images.length <= 9){
         dropzone.css({
