@@ -105,3 +105,6 @@ gem 'gretel'
 
   #  validationを日本語に  #
 gem 'rails-i18n', '~> 5.1'
+
+  #  reCAPTCHA  #
+gem 'recaptcha', require: "recaptcha/rails"

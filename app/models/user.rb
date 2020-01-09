@@ -36,7 +36,7 @@ class User < ApplicationRecord
   validates :phone_num, presence: true, format: { with: /\A\d{10,11}\z/, message: 'の入力が正しくありません'}
 
   # STEP4
-  validates :authentication_num, presence: true, length: { maximum: 4, message: 'を4文字以内にしてください' }, numericality: { only_integer: true }
+  validates :authentication_num, presence: true, length: { is: 4, message: 'を4文字以内にしてください' }, numericality: { only_integer: true }
 
 
 end
