@@ -16,6 +16,8 @@ class ProductsController < ApplicationController
   def show 
     @images = @product.images.order(id: "DESC")
     @image = @product.images.order(id: "DESC").first
+    @comment = Comment.new
+    @comments = Comment.where(product_id: @product.id).includes(:user)
   end
 
   # 商品購入

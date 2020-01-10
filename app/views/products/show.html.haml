@@ -142,27 +142,31 @@
     .message-content
     .message-content__box__form
       .product-message-content
-        .product-message-comment
-          .message-items
-            .message-user
-              = image_tag 'mypage/user-icon.png', size: '30x30', alt: 'user-icon', class:"user-icon"
-              .message-user-name
-                %p
-                  Comment_user_nickname
-            .message-body
-              Comment_text
-              .message-icons
-                .message-icon-left
-                  = fa_icon "history"
-                  %span
-                    1時間
-                .message-icon-right
-                  .message-delete
-                    = link_to "#" do
-                      = fa_icon "trash"
-                  %i.icon-ballon
+        .comment
+          -if @comments 
+            -@comments.each do |comment| 
+              .product-message-comment
+                .message-items
+                  .message-user
+                    = image_tag 'mypage/user-icon.png', size: '30x30', alt: 'user-icon', class:"user-icon"
+                    .message-user-name
+                      %p
+                        = comment.user.nickname
+                  .message-body
+                    = comment.text
+                    .message-icons
+                      .message-icon-left
+                        = fa_icon "history"
+                        %span
+                          = comment.created_at.to_s(:comment)
+                      .message-icon-right
+                        -if comment.user_id == current_user.id && comment.text != "コメントが削除されました" or @product.user_id == current_user.id && comment.text != "コメントが削除されました"
+                          .message-delete
+                            = link_to("/products/#{@product.id}/comments/#{comment.id}",{method:"PATCH"}) do
+                              = fa_icon "trash"
+                    %i.icon-ballon
         .product-message-form
-          = form_for("#") do |f|
+          = form_for [@product, @comment] do |f|
             %p.attention 
               相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             =f.text_field :text, class:"message-form"
