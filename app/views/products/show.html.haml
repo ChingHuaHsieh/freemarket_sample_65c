@@ -160,7 +160,7 @@
                         %span
                           = comment.created_at.to_s(:comment)
                       .message-icon-right
-                        -if comment.user_id == current_user.id && comment.text != "出品者がコメントを削除しました"
+                        -if comment.user_id == current_user.id && comment.text != "コメントが削除されました" or @product.user_id == current_user.id && comment.text != "コメントが削除されました"
                           .message-delete
                             = link_to("/products/#{@product.id}/comments/#{comment.id}",{method:"PATCH"}) do
                               = fa_icon "trash"

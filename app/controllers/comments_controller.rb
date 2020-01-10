@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find_by(id: params[:id])
-    @comment.update(text: "出品者がコメントを削除しました")
+    @comment.update(text: "コメントが削除されました")
     redirect_to "/products/#{@product.id}"
   end
 
