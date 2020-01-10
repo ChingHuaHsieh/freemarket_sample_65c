@@ -11,6 +11,7 @@ class User < ApplicationRecord
   belongs_to_active_hash :birth_dd
 
   has_many :products
+  has_many :comments
   has_many :credit_cards
   has_one :delivery_info
 
