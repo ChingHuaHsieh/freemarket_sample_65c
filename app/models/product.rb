@@ -13,8 +13,8 @@ class Product < ApplicationRecord
   has_many   :images,dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :name, presence: true, length: { maximum: 40 }
-  validates :description, presence: true, length: { maximum: 1000 }
+  validates :name, presence: true, length: { maximum: 40 }, profanity_filter: true
+  validates :description, presence: true, length: { maximum: 1000 }, profanity_filter: true
   validates :category_id, presence: { message: 'を選択してください'}
   validates :goods_status_id, presence: { message: 'を選択してください'}
   validates :delivery_charge_id, presence: { message: 'を選択してください'}

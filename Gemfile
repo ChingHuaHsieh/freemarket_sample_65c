@@ -108,3 +108,6 @@ gem 'rails-i18n', '~> 5.1'
 
   #  reCAPTCHA  #
 gem 'recaptcha', require: "recaptcha/rails"
+
+  #  antivirus(不適切な言葉の検出JEM)  #
+gem 'antivirus'

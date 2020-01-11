@@ -12,10 +12,10 @@
   //  common_header_footer  //
 @import "shared/header";
 @import "shared/footer";
-@import "signup/common";
+@import "module/signup/common";
 
   //  user_relation  //
-@import "signup/signup_main";
+@import "module/signup/signup_main";
 
   //  products_relation  //
 @import "module/products/show";
@@ -26,12 +26,12 @@
 @import "module/products/sellbuttom";
 
   //  mypage_relation  //
-@import "mypage/mypage";
-@import "mypage/mypage.content";
-@import "mypage/mypage.side-bar";
-@import "mypage/profile";
-@import "mypage/bread-crumbs";
-@import "mypage/identification";
+@import "module/mypage/mypage";
+@import "module/mypage/mypage.content";
+@import "module/mypage/mypage.side-bar";
+@import "module/mypage/profile";
+@import "module/mypage/bread-crumbs";
+@import "module/mypage/identification";
 
 
 
