@@ -1,105 +1,14 @@
-%div.pickup__box__bottom
-  %ul.pickup__box__bottom__list
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span 
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "logo_red.svg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
+%li.pickup__box__bottom__list__range
+  %div.pickup__box__bottom__list__range__content
+    = link_to product_path(product.id) do
+      %div.pickup__box__bottom__list__range__content__text
+        %span 
+          = product.name
+      %div.pickup__box__bottom__list__range__content__title
+        %span.pickup__box__bottom__list__range__content__title__price
+          ¥ #{converting_to_jpy(product.price)}
+        = image_tag "#{product.images[-1].image}", class:'pickup-content__img'
+        - unless product.selling_status_id == 1
+          %div.soldout-tag
             %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "logo_red.svg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "logo_red.svg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "logo_red.svg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "logo_red.svg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "product/sample1.jpg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "product/sample2.jpg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "product/sample3.jpg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "product/sample4.jpg", class:'pickup-content__img'
-    %li.pickup__box__bottom__list__range
-      %div.pickup__box__bottom__list__range__content
-        = link_to "#" do
-          %div.pickup__box__bottom__list__range__content__text
-            %span
-              ProductName
-          %div.pickup__box__bottom__list__range__content__title
-            %span.pickup__box__bottom__list__range__content__title__price
-              ¥12,000
-            = image_tag "product/sample5.jpg", class:'pickup-content__img'
-            %div.soldout-tag
-              %span
-                SOLD
+              SOLD

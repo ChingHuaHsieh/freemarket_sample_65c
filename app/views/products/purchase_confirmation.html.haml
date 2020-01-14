@@ -61,8 +61,6 @@
               = @delivery_info.prefecture.name + @delivery_info.city + @delivery_info.block_number + @delivery_info.building_name
               %br
               = @delivery_info.l_name + " " + @delivery_info.f_name
-        
-        
         - if @product.selling_status_id == 4
           %section.buy-detail__inner__form__bottom
             = link_to root_path, method: "GET" do

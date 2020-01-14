@@ -14,7 +14,7 @@ ja:
           l_name: 苗字
           f_name: 名前
           l_name_kana: 苗字(カナ)
-          f_name_kana: 名前(かな)
+          f_name_kana: 名前(カナ)
           phone_num: 電話番号
           authentication_num: 認証番号
           birth_yyyy_id: 生年月日(年)
@@ -25,7 +25,7 @@ ja:
           l_name: 苗字
           f_name: 名前
           l_name_kana: 苗字(カナ)
-          f_name_kana: 名前(かな)
+          f_name_kana: 名前(カナ)
           postal_code: 郵便番号
           prefecture_id: 都道府県
           city: 市区町村
