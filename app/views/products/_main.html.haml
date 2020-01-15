@@ -31,14 +31,18 @@
           %h3.pickup__box__upper__name
             レディース新着アイテム
           = link_to "もっと見る ＞", "#"
-        = render 'pickup'
+        %div.pickup__box__bottom
+          %ul.pickup__box__bottom__list
+            = render partial: 'pickup', collection: @ladiesproducts, as: "product"
     %div.pickup
       %div.pickup__box
         %div.pickup__box__upper
           %h3.pickup__box__upper__name
             メンズ新着アイテム
           = link_to "もっと見る ＞", "#"
-        = render 'pickup'
+        %div.pickup__box__bottom
+          %ul.pickup__box__bottom__list
+            = render partial: 'pickup', collection: @mensproducts, as: "product"
   %div.popular-category
     %h2
       人気のブランド
@@ -59,4 +63,6 @@
           %h3.pickup__box__upper__name
             シャネル新着アイテム
           = link_to "もっと見る ＞", "#"
-        = render 'pickup'
+        %div.pickup__box__bottom
+          %ul.pickup__box__bottom__list
+            = render partial: 'pickup', collection: @brandproducts, as: "product" 

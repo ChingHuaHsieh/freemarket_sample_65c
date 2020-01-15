@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
 
   # toppage
   def index
+    @ladiesproducts = Product.includes(:images).where(category_id: 20..85).order("id DESC").limit(10)
+    @mensproducts = Product.includes(:images).where(category_id: 91..144).order("id DESC").limit(10)
+    #  未作成のため、仮にデータを出す
+    @brandproducts = Product.includes(:images).order("id ASC").limit(10)
   end
 
   # 商品詳細
