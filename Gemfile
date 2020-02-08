@@ -103,7 +103,7 @@ gem 'payjp'
   #  パンくず  #
 gem 'gretel'
 
-  #  validationを日本語に  #
+  #  validationを日本語  #
 gem 'rails-i18n', '~> 5.1'
 
   #  reCAPTCHA  #
