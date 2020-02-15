@@ -98,3 +98,5 @@
 
 ### Association
 - has_many :products
+
+hello world
